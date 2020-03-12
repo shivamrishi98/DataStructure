@@ -1,7 +1,6 @@
 package com.company.Graphs;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Graph {
 
@@ -59,14 +58,99 @@ public class Graph {
 
        }
 
+       public void DFS(int start)
+       {
+           boolean visited[] = new boolean[graph.length];
+           Stack<Integer> st = new Stack<>();
+
+           st.push(start);
+
+           System.out.println("DFS: ");
+           while(!st.isEmpty())
+           {
+               start = st.peek();
+               st.pop();
+
+               if(visited[start]==false)
+               {
+                   System.out.print(start+" ");
+                  visited[start]=true;
+               }
+
+               Iterator<Edge> itr = graph[start].iterator();
+
+               while(itr.hasNext())
+               {
+                   int n = itr.next().dest;
+                   if(!visited[n])
+                   {
+                       st.push(n);
+                   }
+               }
+
+
+           }
+
+
+       }
+
+         public void BFS(int start)
+         {
+             boolean visited[] = new boolean[graph.length];
+             Queue<Integer> queue = new LinkedList<>();
+
+             queue.add(start);
+
+             System.out.println("BFS: ");
+             while(queue.isEmpty() == false)
+             {
+
+                 start = queue.poll();
+
+                 if(visited[start]==false)
+                 {
+                     System.out.print(start+" ");
+                      visited[start] = true;
+                 }
+
+                 Iterator<Edge> itr = graph[start].iterator();
+
+                 while (itr.hasNext())
+                 {
+                     int n = itr.next().dest;
+                     if(!visited[n])
+                     {
+
+                         queue.add(n);
+                     }
+                 }
+
+
+             }
+
+
+
+
+         }
+
+
+
+
     public static void main(String[] args) {
         Graph g = new Graph(5);
         g.addEdge(0,1,5);
-        g.addEdge(2,3,4);
-        g.addEdge(2,5,8);
+        g.addEdge(0,2,4);
+        g.addEdge(1,2,8);
+        g.addEdge(2,0,8);
+        g.addEdge(2,3,8);
+        g.addEdge(3,3,8);
         System.out.println(g.isConnected(2,3));
         g.printGraph();
-    }
+        g.DFS(2);
+        System.out.println();
+        g.BFS(2);
+       }
+
 
 
 
