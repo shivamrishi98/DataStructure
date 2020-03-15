@@ -19,7 +19,7 @@ public class NextGreaterElement {
 
                 st.push(arr[i]);
 
-            
+
         }
             while (!st.isEmpty()) {
                 int top = st.pop();
