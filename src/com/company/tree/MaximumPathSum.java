@@ -3,7 +3,7 @@ package com.company.tree;
 import java.util.Scanner;
 
 class Node {
-    int data;
+    public int data;
     Node left, right;
 
     Node(int key) {

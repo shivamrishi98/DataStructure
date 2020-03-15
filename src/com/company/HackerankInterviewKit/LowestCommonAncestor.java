@@ -1,8 +1,20 @@
-package com.company.tree;
+package com.company.HackerankInterviewKit;
+
+
 
 import java.util.Scanner;
 
 public class LowestCommonAncestor {
+
+  static  class Node {
+        public int data;
+        Node left, right;
+
+        Node(int key) {
+            data = key;
+            left = right = null;
+        }
+    }
 
 
     public static Node lca(Node root, int v1, int v2) {
