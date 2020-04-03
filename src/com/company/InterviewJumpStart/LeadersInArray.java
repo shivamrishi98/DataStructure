@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class LeadersInArray {
 
-    
+
     public static void leaders(int[] input) {
 
         int size=input.length;
